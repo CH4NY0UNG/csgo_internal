@@ -71,7 +71,7 @@ void SetCheat()
 				//바깥쪽 테두리
 				Draw2DBox(vScreen.x + center - thick, vScreen.y - thick, width + thick * 2, head + thick * 2, 1, backColor);
 				//박스 ESP - center를 x에 빼준다. 그럼 캐릭터 왼쪽 발쯤 위치로 x값이 나온다
-				//아래에서 +인 이유는 vScreen.x가 음수이기 때문에
+				//아래에서 +인 이유는 vScreen이 음수이기 때문에
 				Draw2DBox(vScreen.x + center, vScreen.y, width, head, thick, color);
 				//안쪽 테두리
 				Draw2DBox(vScreen.x + center + thick, vScreen.y + thick, width - thick * 2, head - thick * 2, 1, backColor);
