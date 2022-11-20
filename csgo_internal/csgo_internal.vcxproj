@@ -19,11 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aimbot.h" />
     <ClInclude Include="binding.h" />
     <ClInclude Include="calc.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="draw.h" />
-    <ClInclude Include="func.h" />
+    <ClInclude Include="esp.h" />
     <ClInclude Include="hook.h" />
     <ClInclude Include="inc.h" />
     <ClInclude Include="lazy_importer.h" />
@@ -34,10 +35,11 @@
     <ClInclude Include="xor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="aimbot.cpp" />
     <ClCompile Include="calc.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="draw.cpp" />
-    <ClCompile Include="func.cpp" />
+    <ClCompile Include="esp.cpp" />
     <ClCompile Include="hook.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="raytrace.cpp" />

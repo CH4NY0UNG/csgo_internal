@@ -8,7 +8,7 @@ bool IsVisible(Ent* lp, Ent* ent, int boneID)
     tracefilter.pSkip = (void*)lp;
 
     vec3 mPos = lp->Origin + lp->ViewOffset;
-    vec3 tPos = GetBone(ent, boneID);
+    vec3 tPos = ent->GetBone(boneID);
     ray.Init(mPos, tPos);
 
     EngineTrace->TraceRay(ray, MASK_VISIBLE | CONTENTS_HITBOX, &tracefilter, &trace);

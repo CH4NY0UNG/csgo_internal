@@ -69,6 +69,7 @@ inline uintptr_t glowObj = 0;
 inline vector<int> boneList = { 8, 7, 0, 11, 12, 39, 40 };
 
 int GetMaxPlayer();
+
 vec3* GetMyAngle();
 DWORD GetViewMatrix();
 void GlowESP(Ent* ent, float r, float g, float b, float a);

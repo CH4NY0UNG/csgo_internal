@@ -29,4 +29,5 @@ using namespace std;
 #include "draw.h"
 #include "player.h"
 #include "raytrace.h"
-#include "func.h"
+#include "esp.h"
+#include "aimbot.h"

@@ -22,8 +22,11 @@
     <Filter Include="DirectX">
       <UniqueIdentifier>{bbb3539e-382a-4c5e-b4e6-23a21914068b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Function">
-      <UniqueIdentifier>{3fa2c607-942a-40e3-a936-b06792499fef}</UniqueIdentifier>
+    <Filter Include="ESP">
+      <UniqueIdentifier>{dd420e86-1c79-41aa-9042-0a25e5cd8368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AimBot">
+      <UniqueIdentifier>{a836ba55-9dcc-4da6-9636-3667af07c3be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,8 +66,11 @@
     <ClInclude Include="inc.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="func.h">
-      <Filter>Function</Filter>
+    <ClInclude Include="esp.h">
+      <Filter>ESP</Filter>
+    </ClInclude>
+    <ClInclude Include="aimbot.h">
+      <Filter>AimBot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,8 +92,11 @@
     <ClCompile Include="player.cpp">
       <Filter>SDK</Filter>
     </ClCompile>
-    <ClCompile Include="func.cpp">
-      <Filter>Function</Filter>
+    <ClCompile Include="esp.cpp">
+      <Filter>ESP</Filter>
+    </ClCompile>
+    <ClCompile Include="aimbot.cpp">
+      <Filter>AimBot</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -38,7 +38,8 @@ HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 dummyDevice)
 		DrawString((char*)"ESP [PGDN] ON", 12, 10, D3DCOLOR_ARGB(255, 0, 255, 0));
 	}
 
-	SetCheat();
+	ESP();
+	if (LI_FN(GetAsyncKeyState).cached()(VK_XBUTTON2) & 0x8000) Aimbot();
 
 	return oEndScene(pDevice);
 }
