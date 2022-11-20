@@ -64,7 +64,7 @@ DWORD WINAPI MainForm(HMODULE hModule)
 
 	while (!LI_FN(GetAsyncKeyState).cached()(VK_END))
 	{
-		if (GetAsyncKeyState(VK_INSERT) & 1) ShowMenu = !ShowMenu;
+		if (LI_FN(GetAsyncKeyState).cached()(VK_INSERT) & 1) ShowMenu = !ShowMenu;
 		Sleep(1);
 	}
 
