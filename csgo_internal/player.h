@@ -15,27 +15,35 @@ public:
         DEFINE_MEMBER_N(vec3, ViewOffset, offsets::m_vecViewOffset);
         DEFINE_MEMBER_N(vec3, Velocity, offsets::m_vecVelocity);
         DEFINE_MEMBER_N(vec3, Origin, offsets::m_vecOrigin);
-        DEFINE_MEMBER_N(int, Alive, offsets::m_lifeState);
         DEFINE_MEMBER_N(int, Spotted, offsets::m_bSpotted);
         DEFINE_MEMBER_N(int, SpottedByMask, offsets::m_bSpottedByMask);
         DEFINE_MEMBER_N(DWORD, BoneMatrix, offsets::m_dwBoneMatrix);
         DEFINE_MEMBER_N(vec3, PunchAngle, offsets::m_aimPunchAngle);
         DEFINE_MEMBER_N(int, FOV, offsets::m_iFOVStart);
-        DEFINE_MEMBER_N(int, IsLocalPlayer, offsets::m_bIsLocalPlayer);
         DEFINE_MEMBER_N(int, IsScoped, offsets::m_bIsScoped);
         DEFINE_MEMBER_N(bool, IsDefusing, offsets::m_bIsDefusing);
         DEFINE_MEMBER_N(int, IsShotFire, offsets::m_iShotsFired);
         DEFINE_MEMBER_N(int, GlowIndex, offsets::m_iGlowIndex);
     };
 
-    int GetDormant()
+    bool GetDormant()
     {
-        return *(int*)((uintptr_t)this + offsets::m_bDormant);
+        return (*(int*)((uintptr_t)this + offsets::m_bDormant) == 0) ? true : false;
+    }
+
+    bool GetAlive()
+    {
+        return (*(int*)((uintptr_t)this + offsets::m_lifeState) == 0) ? true : false;
+    }
+
+    bool GetIsLocalPlayer()
+    {
+        return (*(int*)((uintptr_t)this + offsets::m_bIsLocalPlayer) != 0) ? true : false;
     }
 
     bool IsValidPlayer()
     {
-        if (this && this->GetDormant() == 0 && this->Health > 0)
+        if (this && !this->GetIsLocalPlayer() && this->GetDormant() && this->GetAlive() && this->Health > 0)
             return true;
 
         return false;

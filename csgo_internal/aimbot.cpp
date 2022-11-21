@@ -35,12 +35,12 @@ void AimAt(Ent* target, vec3 diffs, float dist, float size)
 		//에임 위치에 따라 newAngle - *Angle 값이 양수, 음수 랜덤하기 때문에
 		//처음 몇발은 강제로 에임을 아래로 내려준다.
 		//이후에도 강제로 계속 에임을 내려버리면 우리가 목표로한 뼈를 기준으로 반동제어가 안된다.
-		if (recoil.x < 3) recoil.x += abs((newAngle - *Angle).x);
+		if (recoil.x < 8) recoil.x += abs((newAngle - *Angle).x);
 		else recoil.x += (newAngle - *Angle).x;
 		recoil.y += (newAngle - *Angle).y;
 
 		//첫발때는 반동 크기만 계산하고 실질적으로 2번째 발사부터 반동을 제어해준다.
-		if (fire > 2)
+		if (fire >= 2)
 		{
 			diffs.x += recoil.x;
 			diffs.y += recoil.y;
@@ -62,8 +62,8 @@ void AimAt(Ent* target, vec3 diffs, float dist, float size)
 	}
 	else
 	{
-		Angle->x += (diffs.x / smoothY / distSmooth / GetSmoothY(dist, size) / GetRandomNum(2, 4)); //pitch
-		Angle->y += (diffs.y / smoothX / distSmooth / GetSmoothX(dist, size) / GetRandomNum(2, 4)); //yaw
+		Angle->x += (diffs.x / smoothY / distSmooth / GetSmoothY(dist, size) / GetRandomNum(1, 3)); //pitch
+		Angle->y += (diffs.y / smoothX / distSmooth / GetSmoothX(dist, size) / GetRandomNum(1, 2)); //yaw
 	}
 }
 
