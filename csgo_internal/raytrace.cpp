@@ -11,7 +11,8 @@ bool IsVisible(Ent* lp, Ent* ent, int boneID)
     vec3 tPos = ent->GetBone(boneID);
     ray.Init(mPos, tPos);
 
-    EngineTrace->TraceRay(ray, MASK_VISIBLE | CONTENTS_HITBOX, &tracefilter, &trace);
+    //EngineTrace->TraceRay(ray, MASK_VISIBLE | CONTENTS_HITBOX, &tracefilter, &trace);
+    EngineTrace->TraceRay(ray, MASK_VISIBLE | CONTENTS_HITBOX | CONTENTS_WINDOW | CONTENTS_MONSTER | CONTENTS_DEBRIS, &tracefilter, &trace);
     if (trace.hitgroup != 0 || trace.IsVisible()) return true;
 
     return false;
