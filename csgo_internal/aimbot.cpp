@@ -35,11 +35,9 @@ void AimAt(Ent* target, vec3 diffs, float dist, float size)
 		//에임 위치에 따라 newAngle - *Angle 값이 양수, 음수 랜덤하기 때문에
 		//처음 몇발은 강제로 에임을 아래로 내려준다.
 		//이후에도 강제로 계속 에임을 내려버리면 우리가 목표로한 뼈를 기준으로 반동제어가 안된다.
-		if (recoil.x < 5) recoil.x += abs((newAngle - *Angle).x);
+		if (recoil.x < 3) recoil.x += abs((newAngle - *Angle).x);
 		else recoil.x += (newAngle - *Angle).x;
-		//CSGO는 y가 좌우임 (y 값을 합하지 않는 이유는 FOV 내에서 쏴야하기 때문에 적당히 흔들어서 반동을 제어한다)
-		//마지막 총알까지 완벽하게 제어할수는 없지만 그전에 상대가 죽을 가능성이 높다.
-		recoil.y = (newAngle - *Angle).y;
+		recoil.y += (newAngle - *Angle).y;
 
 		//첫발때는 반동 크기만 계산하고 실질적으로 2번째 발사부터 반동을 제어해준다.
 		if (fire > 2)

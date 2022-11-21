@@ -19,7 +19,8 @@ void ESP()
 		//ESP
 		//거리 1500 = 1500cm = (150 * 10)m = 150m
 		//팀원이 스팟을 찍었을 경우 스팟 찍힌 적은 거리 상관 없이 ESP 그리기
-		if (Distance(me->Origin, player->Origin) > 1500 && player->SpottedByMask == 0) continue;
+		//또는 스코프 모드일 때는 거리 상관 없이 보이게
+		if (Distance(me->Origin, player->Origin) > 1500 && player->SpottedByMask == 0 && me->FOV > 80) continue;
 
 		//적이 보이는지 확인
 		bool checkVisible = false; //상대를 공격할 수 있는지 확인
@@ -36,22 +37,26 @@ void ESP()
 		D3DCOLOR color = D3DCOLOR_ARGB(255, 120, 120, 120);
 		if (checkVisible) color = D3DCOLOR_ARGB(255, 153, 51, 255);
 
-		vec2 vScreen, vBone; //W2S으로 상대 발, 머리 위치를 2D좌표로 가져옴
+		vec2 vScreen, vHead, vBone; //W2S으로 상대 발, 머리 위치를 2D좌표로 가져옴
 		if (W2S(player->Origin, vScreen))
 		{
-			vec3 bonePos = player->GetBone();
+			vec3 obonePos = player->GetBone();
+			vec3 bonePos = obonePos;
 			bonePos.z += 7; //얼굴 정중앙에 있는 위치를 임의로 머리 끝으로 수정
-			if (W2S(bonePos, vBone))
+			if (W2S(obonePos, vHead) && W2S(bonePos, vBone))
 			{
 				//박스를 그리기 위해 높이, 넓이, 넓이 절반 값을 가져옴
 				float head = vBone.y - vScreen.y;
 				float width = head / 2;
 				float center = width / -2; //Origin은 발 사이 정중앙 위치라 center 값을 가져온다
+				float hBox = center / 1.8;
 
 				//Box ESP
 				int thick = 1; //박스 ESP가 더 잘보이게 하기 위해 테두리 두께를 저장
 				D3DCOLOR backColor = D3DCOLOR_ARGB(255, 0, 0, 0); //테두리 색상 저장
 
+				//머리 박스 ESP
+				Draw2DBox(vHead.x - (hBox / 2), vHead.y - (hBox / 2), hBox, hBox, 1, D3DCOLOR_ARGB(255, 255, 255, 51));
 				//바깥쪽 테두리
 				Draw2DBox(vScreen.x + center - thick, vScreen.y - thick, width + thick * 2, head + thick * 2, 1, backColor);
 				//박스 ESP - center를 x에 빼준다. 그럼 캐릭터 x: 왼쪽 어깨 y: 머리 끝 정도 위치로 값이 나온다
