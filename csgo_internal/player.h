@@ -36,14 +36,9 @@ public:
         return (*(int*)((uintptr_t)this + offsets::m_lifeState) == 0) ? true : false;
     }
 
-    bool GetIsLocalPlayer()
-    {
-        return (*(int*)((uintptr_t)this + offsets::m_bIsLocalPlayer) != 0) ? true : false;
-    }
-
     bool IsValidPlayer()
     {
-        if (this && !this->GetIsLocalPlayer() && this->GetDormant() && this->GetAlive() && this->Health > 0)
+        if (this != nullptr && this->GetDormant() && this->GetAlive() && this->Health > 0)
             return true;
 
         return false;
