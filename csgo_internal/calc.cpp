@@ -10,7 +10,7 @@ int GetRandomNum(int min, int max)
 
 int GetSmoothX(float dist, float size)
 {
-    if (dist >= size * 0.3) return 1000;
+    if (dist >= size * 0.5) return 1000;
     if (dist >= size * 0.2) return 10;
     if (dist >= size * 0.1) return 9;
     if (dist >= size * 0.08) return 8;
@@ -27,7 +27,7 @@ int GetSmoothX(float dist, float size)
 
 int GetSmoothY(float dist, float size)
 {
-    if (dist >= size * 0.3) return 1000;
+    if (dist >= size * 0.5) return 1000;
     if (dist >= size * 0.2) return 15;
     if (dist >= size * 0.1) return 12;
     if (dist >= size * 0.07) return 9;

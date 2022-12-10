@@ -59,8 +59,7 @@ void ESP()
 				Draw2DBox(vHead.x - (hBox / 2), vHead.y - (hBox / 2), hBox, hBox, 1, D3DCOLOR_ARGB(255, 255, 255, 51));
 				//바깥쪽 테두리
 				Draw2DBox(vScreen.x + center - thick, vScreen.y - thick, width + thick * 2, head + thick * 2, 1, backColor);
-				//박스 ESP - center를 x에 빼준다. 그럼 캐릭터 x: 왼쪽 어깨 y: 머리 끝 정도 위치로 값이 나온다
-				//아래에서 +인 이유는 CSGO는 x, y가 반대로 움직임
+				//박스 ESP
 				Draw2DBox(vScreen.x + center, vScreen.y, width, head, thick, color);
 				//안쪽 테두리
 				Draw2DBox(vScreen.x + center + thick, vScreen.y + thick, width - thick * 2, head - thick * 2, 1, backColor);
